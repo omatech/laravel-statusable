@@ -9,14 +9,14 @@ trait Statusable
     public function status()
     {
         return $this->morphOne(StatusHistory::class, 'model')
-            ->with(['status'])
+            ->with(['status', 'related'])
             ->orderBy('created_at', 'desc');
     }
 
     public function statusHistory()
     {
         return $this->morphMany(StatusHistory::class, 'model')
-            ->with(['status'])
+            ->with(['status', 'related'])
             ->orderBy('created_at', 'desc');
     }
 

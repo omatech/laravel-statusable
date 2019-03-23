@@ -33,4 +33,9 @@ class StatusHistory extends Model
     {
         return $this->hasOne(Status::class, 'id', 'status_id');
     }
+
+    public function related()
+    {
+        return $this->morphTo(null, 'related_model_type', 'related_model_id');
+    }
 }
