@@ -2,6 +2,7 @@
 
 namespace Omatech\LaravelStatusable\App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class StatusHistory extends Model
@@ -37,5 +38,10 @@ class StatusHistory extends Model
     public function related()
     {
         return $this->morphTo(null, 'related_model_type', 'related_model_id');
+    }
+
+    public function dateTime($format)
+    {
+        return Carbon::parse($this->attributes['created_at'])->format($format);
     }
 }
