@@ -9,8 +9,10 @@ trait Statusable
     public function status()
     {
         return $this->morphOne(StatusHistory::class, 'model')
-            ->with(['status', 'related'])
-            ->orderBy('created_at', 'desc');
+            ->join('status', 'status.id', '=', 'status_history.status_id')
+            ->with(['related'])
+            ->orderBy('status.level', 'desc')
+            ->orderBy('status_history.created_at', 'desc');
     }
 
     public function statusHistory()
@@ -20,12 +22,30 @@ trait Statusable
             ->orderBy('created_at', 'desc');
     }
 
+    public function statusHistoryLevel()
+    {
+        return $this->morphMany(StatusHistory::class, 'model')
+            ->with(['status'])
+            ->orderBy('created_at', 'desc');
+    }
+
     public function getStatusAttribute()
     {
         $status = $this->status()->first();
 
         if ($status) {
-            return __($status->status->key);
+            return __($status->key);
+        }
+
+        return null;
+    }
+
+    public function getStatusLevelAttribute()
+    {
+        $status = $this->status()->first();
+
+        if ($status) {
+            return $status->level;
         }
 
         return null;
@@ -36,7 +56,7 @@ trait Statusable
         $status = $this->status()->first();
 
         if ($status) {
-            return __($status->status->short_key);
+            return __($status->short_key);
         }
 
         return null;

@@ -18,7 +18,7 @@ class StatusHistory extends Model
         $add->model_id = $model->id;
 
         if ($guard) {
-            $add->user_id = auth()->guard($guard)->user()->id;
+            $add->user_id = auth()->guard($guard)->user()->id ?? 0;
             $add->guard = $guard;
         }
 

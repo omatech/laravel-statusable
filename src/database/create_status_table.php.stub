@@ -18,6 +18,7 @@ class CreateStatusTable extends Migration
             $table->string('name');
             $table->string('key');
             $table->string('short_key');
+            $table->integer('level')->default(0);
             $table->timestamps();
         });
     }
