@@ -5,6 +5,9 @@ namespace Omatech\LaravelStatusable;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Omatech\LaravelStatusable\App\Models\StatusHistory;
 
 class LaravelStatusableServiceProvider extends ServiceProvider
 {
@@ -26,7 +29,15 @@ class LaravelStatusableServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        Builder::macro('statusable', function ($status, Model $related = null) {
+            StatusHistory::add(
+                $status,
+                $this->model,
+                $related
+            );
 
+            return $this->model;
+        });
     }
 
     /**
