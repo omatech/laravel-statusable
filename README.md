@@ -1,8 +1,6 @@
 # Laravel Statusable
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/omatech/laravel-statusable.svg?style=flat-square)](https://packagist.org/packages/omatech/laravel-statusable)
-[![Build Status](https://img.shields.io/travis/omatech/laravel-statusable/master.svg?style=flat-square)](https://travis-ci.org/omatech/laravel-statusable)
-[![Quality Score](https://img.shields.io/scrutinizer/g/omatech/laravel-statusable.svg?style=flat-square)](https://scrutinizer-ci.com/g/omatech/laravel-statusable)
 [![Total Downloads](https://img.shields.io/packagist/dt/omatech/laravel-statusable.svg?style=flat-square)](https://packagist.org/packages/omatech/laravel-statusable)
 
 Tired of repeating the status control of your models again and again? Well, here it's already done.
@@ -61,7 +59,6 @@ If you discover any security related issues, please email apons@omatech.com inst
 
 ## Credits
 
-- [Christian Bohollo](https://github.com/omatech)
 - [All Contributors](../../contributors)
 
 ## License
